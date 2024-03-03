@@ -1,0 +1,133 @@
+html {
+    font-size: 14px;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1.457rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+a {
+    color: #5196a6;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: #407784;
+}
+
+footer {
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    background-color: #f2f0eb;
+}
+
+.simpletravel-wrapper {
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 60px;
+    box-sizing: border-box;
+}
+
+.simpletravel-navbar {
+    min-height: 60px;
+}
+
+.simpletravel-logo {
+    height: 30px;
+}
+
+.simpletravel-btn {
+    background-color: #5196a6 !important;
+    transition: 0.1s;
+}
+
+.simpletravel-btn:hover {
+    opacity: 0.8;
+}
+
+.simpletravel-page-link {
+    color: #5196a6;
+}
+
+.simpletravel-page-link:hover {
+    color: #407784;
+}
+
+.simpletravel-active {
+    background-color: #5196a6 !important;
+    border-color: #5196a6 !important;
+}
+
+.simpletravel-pre-wrap {
+    /* 改行文字で行を折り返す */
+    white-space: pre-wrap;
+}
+
+.simpletravel-link-danger {
+    color: #f2594b;
+}
+
+.simpletravel-link-danger:hover {
+    color: #a63c3c;
+}
+
+.simpletravel-btn-danger {
+    background-color: #f2594b !important;
+    transition: 0.1s;
+}
+
+.simpletravel-btn-danger:hover {
+    opacity: 0.8;
+}
+
+.simpletravel-dropdown-item:active {
+    background-color: #5196a6;
+}
+
+.simpletravel-card-link {
+    transition: 0.3s;
+}
+
+.simpletravel-card-link:hover {
+    opacity: 0.7;
+}
+
+.simpletravel-horizontal-card-image {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+}
+
+.simpletravel-sort-box {
+    width: 150px;
+}
+
+.simpletravel-vertical-card-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.simpletravel-search-form {
+    max-width: 300px;
+}
+
+@media screen and (min-width: 1400px) {
+    .simpletravel-container {
+        max-width: 1200px;
+    }
+}
