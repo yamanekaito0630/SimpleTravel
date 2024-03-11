@@ -202,8 +202,8 @@ INSERT IGNORE INTO users (id, name, furigana, postal_code, address, phone_number
 VALUES (1, '山根 太郎', 'ヤマネ タロウ', '101-0022', '東京都千代田区神田練塀町300番地', '090-1234-5678',
         'taro.YAMANE@example.com', '$2a$10$2JNjTwZBwo7fprL2X4sv.OEKqxnVtsVQvuXDkI8xVGix.U3W5B7CO', 1, true);
 INSERT IGNORE INTO users (id, name, furigana, postal_code, address, phone_number, email, password, role_id, enabled)
-VALUES (2, '山根 海翔', 'ヤマネ カイト', '101-0022', '東京都千代田区神田練塀町300番地', '090-1234-5678',
-        'admin@example.com', '$2a$10$2JNjTwZBwo7fprL2X4sv.OEKqxnVtsVQvuXDkI8xVGix.U3W5B7CO', 2, true);
+VALUES (2, '山根 花子', 'ヤマネ ハナコ', '101-0022', '東京都千代田区神田練塀町300番地', '090-1234-5678',
+        'hanako.YAMANE@example.com', '$2a$10$2JNjTwZBwo7fprL2X4sv.OEKqxnVtsVQvuXDkI8xVGix.U3W5B7CO', 2, true);
 INSERT IGNORE INTO users (id, name, furigana, postal_code, address, phone_number, email, password, role_id, enabled)
 VALUES (3, '山根 義勝', 'ヤマネ ヨシカツ', '638-0644', '奈良県五條市西吉野町湯川X-XX-XX', '090-1234-5678',
         'yoshikatsu.YAMANE@example.com', 'password', 1, false);
@@ -258,6 +258,9 @@ INSERT IGNORE INTO reservations (id, house_id, user_id, checkin_date, checkout_d
 VALUES (10, 10, 1, '2023-04-01', '2023-04-02', 6, 10000);
 INSERT IGNORE INTO reservations (id, house_id, user_id, checkin_date, checkout_date, number_of_people, amount)
 VALUES (11, 11, 1, '2023-04-01', '2023-04-02', 2, 6000);
+INSERT IGNORE INTO users (name, furigana, postal_code, address, phone_number, email, password, role_id, enabled)
+VALUES ('山根 海翔', 'ヤマネ カイト', '101-0022', '東京都千代田区神田練塀町300番地', '090-1234-5678',
+        'admin@example.com', '$2a$10$2JNjTwZBwo7fprL2X4sv.OEKqxnVtsVQvuXDkI8xVGix.U3W5B7CO', 2, true);
 
 -- reviewsテーブル
 INSERT IGNORE INTO reviews (id, house_id, user_id, number_of_stars, comment)
