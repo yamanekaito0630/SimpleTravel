@@ -24,7 +24,7 @@
                                 <li class="breadcrumb-item active" aria-current="page">民宿詳細</li>
                             </ol>
                         </nav>
-                        <div sec:authorize="isAuthenticated()" id="favoriteElement">
+                        <div sec:authorize="hasRole('ROLE_GENERAL')" id="favoriteElement">
                             <input id="houseId" type="hidden" th:value="${house.getId()}">
                             <input id="csrf" type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                             <span th:if="${favoriteIsNull}" id="addFavorite" class="simpletravel-page-link">&#9825;お気に入り追加</span>
@@ -116,7 +116,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div sec:authorize="isAuthenticated()" class="col-lg-4 px-0 ps-lg-4 mb-4">
+                            <div sec:authorize="hasRole('ROLE_GENERAL')" class="col-lg-4 px-0 ps-lg-4 mb-4">
                                 <div class="card">
                                     <div class="card-body">
                                         <form th:action="@{/houses/__${house.getId()}__/reservations/input}"
@@ -150,7 +150,7 @@
                         </div>
                     </div>
                     <h1 class="text-center">レビュー</h1>
-                    <div sec:authorize="isAuthenticated()" th:if="${!isPosted}" class="text-center my-4">
+                    <div sec:authorize="hasRole('ROLE_GENERAL')" th:if="${!isPosted}" class="text-center my-4">
                         <a th:href="@{/houses/__${house.getId()}__/post}" class="btn text-white simpletravel-btn w-25" style="min-width: 150px;">レビューを投稿する</a>
                     </div>
                     <div th:if="${reviews.size() != 0}">
