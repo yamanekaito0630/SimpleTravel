@@ -65,6 +65,7 @@ footer {
 
 .simpletravel-page-link:hover {
     color: #407784;
+    cursor: pointer;
 }
 
 .simpletravel-active {

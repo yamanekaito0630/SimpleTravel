@@ -2,13 +2,16 @@ package com.example.simpletravel.controller;
 
 import com.example.simpletravel.entity.House;
 import com.example.simpletravel.entity.Reservation;
+import com.example.simpletravel.entity.Review;
 import com.example.simpletravel.entity.User;
 import com.example.simpletravel.form.ReservationInputForm;
 import com.example.simpletravel.form.ReservationRegisterForm;
 import com.example.simpletravel.repository.HouseRepository;
 import com.example.simpletravel.repository.ReservationRepository;
+import com.example.simpletravel.repository.ReviewRepository;
 import com.example.simpletravel.security.UserDetailsImpl;
 import com.example.simpletravel.service.ReservationService;
+import com.example.simpletravel.service.ReviewService;
 import com.example.simpletravel.service.StripeService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.data.domain.Page;
@@ -27,21 +30,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Controller
 public class ReservationController {
     private final ReservationRepository reservationRepository;
     private final HouseRepository houseRepository;
+    private final ReviewRepository reviewRepository;
     private final ReservationService reservationService;
+    private final ReviewService reviewService;
     private final StripeService stripeService;
 
     public ReservationController(ReservationRepository reservationRepository,
                                  HouseRepository houseRepository,
+                                 ReviewRepository reviewRepository,
                                  ReservationService reservationService,
+                                 ReviewService reviewService,
                                  StripeService stripeService) {
         this.reservationRepository = reservationRepository;
         this.houseRepository = houseRepository;
+        this.reviewRepository = reviewRepository;
         this.reservationService = reservationService;
+        this.reviewService = reviewService;
         this.stripeService = stripeService;
     }
 
@@ -57,6 +67,7 @@ public class ReservationController {
 
     @GetMapping("/houses/{id}/reservations/input")
     public String input(@PathVariable(name = "id") Integer id,
+                        @AuthenticationPrincipal UserDetailsImpl userDetailsImpl,
                         @ModelAttribute @Validated ReservationInputForm reservationInputForm,
                         BindingResult bindingResult,
                         RedirectAttributes redirectAttributes,
@@ -71,8 +82,13 @@ public class ReservationController {
             }
         }
         if (bindingResult.hasErrors()) {
+            User user = userDetailsImpl.getUser();
+            List<Review> reviews = this.reviewRepository.findTop4ByHouseOrderByUpdatedAtDesc(house);
             model.addAttribute("house", house);
+            model.addAttribute("user", user);
             model.addAttribute("errorMessage", "予約内容に不備があります。");
+            model.addAttribute("isPosted", this.reviewService.isPosted(house, user));
+            model.addAttribute("reviews", reviews);
             return "houses/show";
         }
         redirectAttributes.addFlashAttribute("reservationInputForm", reservationInputForm);
@@ -109,12 +125,4 @@ public class ReservationController {
         model.addAttribute("sessionId", sessionId);
         return "reservations/confirm";
     }
-
-    /*
-    @PostMapping("/houses/{id}/reservations/create")
-    public String create(@ModelAttribute ReservationRegisterForm reservationRegisterForm){
-        this.reservationService.create(reservationRegisterForm);
-        return "redirect:/reservations?reserved";
-    }
-    */
 }

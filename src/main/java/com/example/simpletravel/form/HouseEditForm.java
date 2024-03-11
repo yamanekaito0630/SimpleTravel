@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 @Data
 @AllArgsConstructor
 public class HouseEditForm {
-
     @NotNull
     private Integer id;
 
