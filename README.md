@@ -1,12 +1,6 @@
 <h1>Simple Travel</h1>
 <h3>Spring bootを用いた民宿予約アプリ</h3>
 Webサイトは<a href="https://simple-travel-d803e592996e.herokuapp.com/">こちら</a> 
-<hr>
-<h3>管理者画面</h3>
-<div><b>ログイン情報</b></div>
-<div>メールアドレス：admin@example.com</div>
-<div>パスワード：password</div>
-<hr>
 
 <h3>一般ユーザ画面</h3>
 <div>ヘッダーの「会員登録」から登録してログイン可能</div>
